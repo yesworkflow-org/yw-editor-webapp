@@ -21,7 +21,7 @@
     }
 
     var onGraphComplete = function(response) {
-      $scope.graphId = response.data.language;
+      $scope.dot = response.data.dot;
     };
 
 
