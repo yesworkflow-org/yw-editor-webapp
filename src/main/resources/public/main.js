@@ -11,9 +11,13 @@
     });
 
     $scope.setMode = function() {
-      editor.session.setMode("ace/mode/" + $scope.scriptLanguage);
+      editor.session.setMode( "ace/mode/" + $scope.scriptLanguage );
     }
-    
+
+    $scope.setTheme = function() {
+      editor.setTheme( $scope.theme );
+    }
+
     $scope.getGraph = function() {
       $http.post(
         "http://localhost:8081/api/v1/graph/",
@@ -27,14 +31,13 @@
     var onGraphComplete = function(response) {
       $scope.dot = response.data.dot;
     };
-
-
-    editor.setTheme("ace/theme/xcode");
-    editor.session.setMode("ace/mode/python");
     
-
+    $scope.theme = "ace/theme/xcode";
     $scope.scriptLanguage = "python";
-    $scope.graphId = "foo";
+
+    editor.setTheme( $scope.theme );
+    editor.session.setMode( $scope.scriptLanguage );
+
   };
 
   app.controller("MainController", ["$scope", "$http", MainController]);

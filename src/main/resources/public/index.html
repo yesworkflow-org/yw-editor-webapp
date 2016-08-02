@@ -25,6 +25,12 @@
       <option value="r">R</option>
     </select>
 
+    Theme:
+    <select ng-model="theme" ng-change="setTheme()">
+      <option value="ace/theme/xcode">Light</option>
+      <option value="ace/theme/twilight">Dark</option>
+    </select>
+
     <form name="post-request">
       <input type="submit" value="Search" ng-click="getGraph()" />
     </form>
