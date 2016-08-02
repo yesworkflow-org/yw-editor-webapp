@@ -11,12 +11,17 @@
     }
     
     $scope.getGraph = function() {
-      $http.get("http://localhost:8081/api/v1/graph/cache/8834")
+      $http.post(
+        "http://localhost:8081/api/v1/graph/",
+        {
+            language: $scope.scriptLanguage,
+            code: "# Some code"
+        })
         .then(onGraphComplete);
     }
 
     var onGraphComplete = function(response) {
-      $scope.graphId = response.data;
+      $scope.graphId = response.data.language;
     };
 
 
