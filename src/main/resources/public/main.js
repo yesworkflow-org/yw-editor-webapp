@@ -29,7 +29,7 @@
     };
 
 
-    editor.setTheme("ace/theme/twilight");
+    editor.setTheme("ace/theme/xcode");
     editor.session.setMode("ace/mode/python");
     
 
