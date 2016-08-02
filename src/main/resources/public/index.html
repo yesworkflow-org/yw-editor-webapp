@@ -5,9 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>YesWorkflow Editor</title>
-  <script data-require="angular.js@*"
-          data-semver="1.5.7" 
-          src="https://code.angularjs.org/1.5.7/angular.js">
+  <script data-require="angular.js@*" data-semver="1.5.7" src="https://code.angularjs.org/1.5.7/angular.js">
   </script>
   <link rel="stylesheet" href="style.css" />
   <script src="main.js"></script>
@@ -17,23 +15,37 @@
 
   <div id="options">
 
-  Language:
-  <select ng-model="scriptLanguage" ng-change="modeChange(mode)">
-    <option value="sh">Bash</option>
-    <option value="matlab">MATLAB</option>
-    <option value="python">Python</option>
-    <option value="r">R</option>
-  </select>
-  
+    Language:
+    <select ng-model="scriptLanguage" ng-change="setMode()">
+      <option value="sh">Bash</option>
+      <option value="c_cpp">C/C++</option>
+      <option value="java">Java</option>
+      <option value="matlab">MATLAB</option>
+      <option value="python">Python</option>
+      <option value="r">R</option>
+    </select>
+
+    <form name="post-request">
+      <input type="submit" value="Search" ng-click="getGraph()" />
+    </form>
+
   </div>
 
-  <pre id="editor">
+  <div id="script">
+
+    <pre id="editor">
     # Enter your code and YesWorkflow annotations here:
     
     # @begin MyScript
     
     # @end MyScript
-  </pre>
+    </pre>
+
+    <div id="viewer">
+      {{graphId}}
+    </div>
+
+  </div>
 
   <script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript" charset="utf-8"></script>
 
