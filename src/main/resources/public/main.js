@@ -6,6 +6,10 @@
 
     var editor = ace.edit("editor");
 
+    editor.getSession().on('change', function(e) {
+        $scope.getGraph();
+    });
+
     $scope.setMode = function() {
       editor.session.setMode("ace/mode/" + $scope.scriptLanguage);
     }
@@ -15,7 +19,7 @@
         "http://localhost:8081/api/v1/graph/",
         {
             language: $scope.scriptLanguage,
-            code: "# Some code"
+            code: editor.getValue()
         })
         .then(onGraphComplete);
     }
