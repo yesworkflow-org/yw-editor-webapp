@@ -11,7 +11,7 @@
   <script src="main.js"></script>
 </head>
 
-<body ng-controller="MainController">
+<body ng-controller="MainController" style="background: {{background}}">
 
   <div id="options" class="styled-options">
 
@@ -31,7 +31,7 @@
       Theme:
       <select ng-model="theme" ng-change="setTheme()">
         <option value="ace/theme/xcode">Light</option>
-        <option value="ace/theme/twilight">Dark</option>
+        <option value="ace/theme/clouds_midnight">Dark</option>
       </select>
     </div>
 

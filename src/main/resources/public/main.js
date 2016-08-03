@@ -16,8 +16,15 @@
     }
 
     $scope.setTheme = function() {
+      
       editor.setTheme( $scope.theme );
       viewer.setTheme( $scope.theme );
+      
+      if ($scope.theme == "ace/theme/xcode") {
+        $scope.background = "#fcfcfc";
+      } else {
+        $scope.background = "#b0b0b0";
+      }
     }
 
     $scope.getGraph = function() {
@@ -37,7 +44,6 @@
     
     $scope.theme = "ace/theme/xcode";
     $scope.scriptLanguage = "r";
-
     $scope.setTheme();
     $scope.setMode();
     
