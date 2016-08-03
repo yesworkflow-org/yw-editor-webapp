@@ -13,28 +13,33 @@
 
 <body ng-controller="MainController">
 
-  <div id="options">
+  <div id="options" class="styled-options">
 
-    Language:
-    <select ng-model="scriptLanguage" ng-change="setMode()">
-      <option value="sh">Bash</option>
-      <option value="c_cpp">C/C++</option>
-      <option value="java">Java</option>
-      <option value="matlab">MATLAB</option>
-      <option value="python">Python</option>
-      <option value="r">R</option>
-    </select>
+    <div class="styled-option">
+      Language:
+      <select ng-model="scriptLanguage" ng-change="setMode()">
+        <option value="sh">Bash</option>
+        <option value="c_cpp">C/C++</option>
+        <option value="java">Java</option>
+        <option value="matlab">MATLAB</option>
+        <option value="python">Python</option>
+        <option value="r">R</option>
+      </select>
+    </div>
 
-    Theme:
-    <select ng-model="theme" ng-change="setTheme()">
-      <option value="ace/theme/xcode">Light</option>
-      <option value="ace/theme/twilight">Dark</option>
-    </select>
+    <div class="styled-option">
+      Theme:
+      <select ng-model="theme" ng-change="setTheme()">
+        <option value="ace/theme/xcode">Light</option>
+        <option value="ace/theme/twilight">Dark</option>
+      </select>
+    </div>
 
-    <form name="post-request">
-      <input type="submit" value="Search" ng-click="getGraph()" />
-    </form>
-
+    <div class="styled-option">
+      <form>
+        <input type="submit" value="Update graph" ng-click="getGraph()" />
+      </form>
+    </div>
   </div>
 
   <div id="script">

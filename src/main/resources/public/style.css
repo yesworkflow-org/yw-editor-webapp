@@ -14,19 +14,33 @@ body {
     font-size: 12px;
 }
 
+.styled-option {
+  margin: 10px;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.styled-option select {
+  width: 80px;
+  background: #f0f0f0;
+  position: absolute;
+  right: 0;
+  margin: -2px;
+}
+
 #options {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    width: 150px;
+    width: 155px;
 }
 
 #script {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 150px;
+    left: 160px;
     right: 0;
 }
 
@@ -36,6 +50,8 @@ body {
     bottom: 0;
     left: 0;
     width: 50%;
+    border: 1px solid black;
+    margin: 10px;
 }
 
 #viewer {
@@ -44,4 +60,5 @@ body {
     bottom: 0;
     right: 0;
     width: 50%;
-}
+    padding: 5px;
+  }
