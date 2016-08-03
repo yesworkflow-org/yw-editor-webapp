@@ -5,6 +5,7 @@
   var MainController = function($scope, $http) {
 
     var editor = ace.edit("editor");
+    var viewer = ace.edit("viewer");
 
     editor.getSession().on('change', function(e) {
         $scope.getGraph();
@@ -16,6 +17,7 @@
 
     $scope.setTheme = function() {
       editor.setTheme( $scope.theme );
+      viewer.setTheme( $scope.theme );
     }
 
     $scope.getGraph = function() {
@@ -29,15 +31,31 @@
     }
 
     var onGraphComplete = function(response) {
-      $scope.dot = response.data.dot;
+      viewer.setValue(response.data.dot);
+      viewer.clearSelection()
     };
     
     $scope.theme = "ace/theme/xcode";
-    $scope.scriptLanguage = "python";
+    $scope.scriptLanguage = "r";
 
-    editor.setTheme( $scope.theme );
-    editor.session.setMode( $scope.scriptLanguage );
+    $scope.setTheme();
+    $scope.setMode();
+    
+    viewer.setReadOnly(true);
+    viewer.setHighlightActiveLine(false);
+    viewer.setShowPrintMargin(false);
+    viewer.setHighlightGutterLine(false);
+    viewer.renderer.setShowGutter(false);
+    viewer.session.setMode( "ace/mode/java" );
 
+    editor.setShowPrintMargin(false);
+    editor.setValue(
+      "# Enter your code and YesWorkflow annotations here:\n" +
+      "\n" +
+      "# @begin MyScript\n" +
+      "\n" +
+      "# @end MyScript\n");
+    editor.clearSelection();
   };
 
   app.controller("MainController", ["$scope", "$http", MainController]);
