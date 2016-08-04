@@ -6,16 +6,17 @@
 
     var editor = ace.edit("editor");
     var viewer = ace.edit("viewer");
+    var graph = {};
 
     editor.getSession().on('change', function(e) {
         $scope.getGraph();
     });
 
-    $scope.setMode = function() {
-      editor.session.setMode( "ace/mode/" + $scope.scriptLanguage );
+    $scope.languageChange = function() {
+      editor.session.setMode( "ace/mode/" + $scope.language );
     }
 
-    $scope.setTheme = function() {
+    $scope.themeChange = function() {
       
       editor.setTheme( $scope.theme );
       viewer.setTheme( $scope.theme );
@@ -27,31 +28,58 @@
       }
     }
 
+    $scope.viewerModeChange = function() {
+      updateViewer();
+    }
+
+
     $scope.getGraph = function() {
       $http.post(
         "http://localhost:8081/api/v1/graph/",
         {
-            language: $scope.scriptLanguage,
+            language: $scope.language,
             code: editor.getValue()
         })
         .then(onGraphComplete);
     }
 
     var onGraphComplete = function(response) {
-      if (response.data.skeleton == null) {
-        viewer.setValue(response.data.error);
-      } else {
-        viewer.setValue(response.data.dot);
-      } //else {
-      //   viewer.setValue(response.data.error);
-      // }
-      viewer.clearSelection()
+      graph = response.data;
+      updateViewer();
+    } 
+    
+    var updateViewer = function() {
+      
+      var content = null;
+      
+      switch($scope.viewerMode) {
+        
+        case "skeleton":
+          content = graph.skeleton;
+          break;
+        
+        case "dot":
+          content = graph.dot;
+          break;
+          
+        case "graph":
+          content = "No graphical view yet";
+          break;
+      }
+      
+      if (content == null) {
+        content = graph.error;
+      }
+      
+      viewer.setValue(content);
+      viewer.clearSelection();
     };
     
     $scope.theme = "ace/theme/xcode";
-    $scope.scriptLanguage = "r";
-    $scope.setTheme();
-    $scope.setMode();
+    $scope.language = "r";
+    $scope.viewerMode = "skeleton";
+    $scope.themeChange();
+    $scope.languageChange();
     
     viewer.setReadOnly(true);
     viewer.setHighlightActiveLine(false);
