@@ -1,6 +1,6 @@
 (function() {
 
-  var app = angular.module("yw-editor-app", []);
+  var app = angular.module("yw-editor-app", ['ngSanitize']);
 
   var MainController = function($scope, $http) {
 
@@ -56,18 +56,21 @@
         
         case "skeleton":
           content = graph.skeleton;
+          $scope.showGrapher = false;
           break;
         
         case "dot":
           content = graph.dot;
+          $scope.showGrapher = false;
           break;
           
         case "graph":
-          content = "No graphical view yet";
+          content = graph.svg;
+          $scope.showGrapher = false;
           break;
       }
       
-      if (content == null) {
+      if (content === null) {
         content = graph.error;
       }
       
@@ -78,9 +81,12 @@
     $scope.theme = "ace/theme/xcode";
     $scope.language = "r";
     $scope.viewerMode = "skeleton";
+    $scope.showGrapher = false;
     $scope.themeChange();
     $scope.languageChange();
     
+    $scope.graphSvg = '<svg><circle cx="0" cy="0" r="40" stroke="green" stroke-width="4" fill="yellow" /></svg>';
+
     viewer.setReadOnly(true);
     viewer.setHighlightActiveLine(false);
     viewer.setShowPrintMargin(false);
