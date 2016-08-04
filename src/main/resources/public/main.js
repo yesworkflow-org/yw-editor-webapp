@@ -38,7 +38,13 @@
     }
 
     var onGraphComplete = function(response) {
-      viewer.setValue(response.data.dot);
+      if (response.data.skeleton == null) {
+        viewer.setValue(response.data.error);
+      } else {
+        viewer.setValue(response.data.dot);
+      } //else {
+      //   viewer.setValue(response.data.error);
+      // }
       viewer.clearSelection()
     };
     
