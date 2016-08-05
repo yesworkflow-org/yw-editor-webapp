@@ -66,7 +66,9 @@
           
         case "graph":
           content = graph.svg;
-          $scope.showGrapher = false;
+          $scope.showGrapher = true;
+
+          d3.select('#grapher').html(graph.svg);
           break;
       }
       
@@ -84,9 +86,8 @@
     $scope.showGrapher = false;
     $scope.themeChange();
     $scope.languageChange();
+    $scope.graphSvg = '';
     
-    $scope.graphSvg = '<svg><circle cx="0" cy="0" r="40" stroke="green" stroke-width="4" fill="yellow" /></svg>';
-
     viewer.setReadOnly(true);
     viewer.setHighlightActiveLine(false);
     viewer.setShowPrintMargin(false);

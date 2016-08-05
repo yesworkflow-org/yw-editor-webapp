@@ -1,70 +1,62 @@
 <!DOCTYPE html>
 <html ng-app="yw-editor-app" lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>YesWorkflow Editor</title>
-  <script data-require="angular.js@*" data-semver="1.5.7" src="https://code.angularjs.org/1.5.7/angular.js"></script>
-  <script src="https://code.angularjs.org/1.5.7/angular-sanitize.js"></script>
-  <link rel="stylesheet" href="style.css" />
-  <script src="main.js"></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>YesWorkflow Editor</title>
+    <script data-require="angular.js@*" data-semver="1.5.7" src="https://code.angularjs.org/1.5.7/angular.js"></script>
+    <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+    <script src="https://code.angularjs.org/1.5.7/angular-sanitize.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js"></script>
+  </head>
 
-<body ng-controller="MainController" style="background: {{background}}">
-
-  <div id="options" class="styled-options">
-
-    <div class="styled-option">
+  <body ng-controller="MainController" style="background: {{background}}">
+    <div id="options" class="styled-options">
+      <div class="styled-option">
       Language:
-      <select ng-model="language" ng-change="languageChange()">
-        <option value="sh">Bash</option>
-        <option value="c_cpp">C/C++</option>
-        <option value="java">Java</option>
-        <option value="matlab">MATLAB</option>
-        <option value="python">Python</option>
-        <option value="r">R</option>
-      </select>
-    </div>
-
-    <div class="styled-option">
+              <select ng-model="language" ng-change="languageChange()">
+          <option value="sh">Bash</option>
+          <option value="c_cpp">C/C++</option>
+          <option value="java">Java</option>
+          <option value="matlab">MATLAB</option>
+          <option value="python">Python</option>
+          <option value="r">R</option>
+        </select>
+      </div>
+      <div class="styled-option">
       Theme:
-      <select ng-model="theme" ng-change="themeChange()">
-        <option value="ace/theme/xcode">Light</option>
-        <option value="ace/theme/clouds_midnight">Dark</option>
-      </select>
-    </div>
-
-    <div class="styled-option">
+              <select ng-model="theme" ng-change="themeChange()">
+          <option value="ace/theme/xcode">Light</option>
+          <option value="ace/theme/tomorrow_night">Dark</option>
+        </select>
+      </div>
+      <div class="styled-option">
       Viewer:
-      <select ng-model="viewerMode" ng-change="viewerModeChange()">
-        <option value="skeleton">Skeleton</option>
-        <option value="dot">Dot</option>
-        <option value="graph">Graph</option>
-      </select>
-    </div>
-
-    <div class="styled-option">
-      <form>
-        <input type="submit" value="Update graph" ng-click="getGraph()" />
-      </form>
-    </div>
-  </div>
-
-  <div id="script">
-    <div id="editor-container">
-      <pre id="editor"></pre>
-    </div>
-    <div id="viewer-container">
-      <pre id="viewer" ng-hide="showGrapher"></pre>
-      <div id="grapher" ng-show="showGrapher">
-        <ng-bind-html ng-bind-html="graphSvg"></ng-bind-html>
+              <select ng-model="viewerMode" ng-change="viewerModeChange()">
+          <option value="skeleton">Skeleton</option>
+          <option value="dot">Dot</option>
+          <option value="graph">Graph</option>
+        </select>
+      </div>
+      <div class="styled-option">
+        <form>
+          <input type="submit" value="Update graph" ng-click="getGraph()" />
+        </form>
       </div>
     </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript" charset="utf-8"></script>
-
-</body>
+    <div id="script">
+      <div id="editor-container">
+        <pre id="editor"></pre>
+      </div>
+      <div id="viewer-container">
+        <pre id="viewer" ng-hide="showGrapher"></pre>
+        <div id="grapher" ng-show="showGrapher">
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript" charset="utf-8"></script>
+  </body>
 
 </html>
