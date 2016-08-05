@@ -55,20 +55,33 @@
       switch($scope.viewerMode) {
         
         case "skeleton":
-          content = graph.skeleton;
-          $scope.showGrapher = false;
+          if (graph.skeleton) {
+            $scope.showGrapher = false;
+            viewer.setValue(graph.skeleton);
+          } else {
+            viewer.setValue(graph.error)
+          }
           break;
         
         case "dot":
-          content = graph.dot;
           $scope.showGrapher = false;
+          if (graph.dot) {
+            viewer.setValue(graph.dot);
+          } else {
+            viewer.setValue(graph.error)
+          }
           break;
           
         case "graph":
-          content = graph.svg;
-          $scope.showGrapher = true;
-
-          d3.select('#grapher').html(graph.svg);
+          if (graph.svg) {
+            $scope.showGrapher = true;
+            var svgElementStart = graph.svg.search("<svg");
+            var svgElement = graph.svg.substring(svgElementStart);
+            d3.select('#grapher').html(svgElement);
+          } else {
+            $scope.showGrapher = false;
+            viewer.setValue(graph.error)
+          }          
           break;
       }
       
@@ -76,7 +89,6 @@
         content = graph.error;
       }
       
-      viewer.setValue(content);
       viewer.clearSelection();
     };
     
