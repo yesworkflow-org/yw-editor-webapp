@@ -91,4 +91,5 @@ body {
     left: 4px;
     margin: 0;
     border: 1px solid black;
+    overflow: auto;
 }

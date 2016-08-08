@@ -78,10 +78,13 @@
             var svgElementStart = graph.svg.search("<svg");
             var svgElement = graph.svg.substring(svgElementStart);
             d3.select('#grapher').html(svgElement);
+            svg = d3.select('svg');
+            // svg.attr("width", "900");
+            // svg.attr("height", "900");
           } else {
             $scope.showGrapher = false;
-            viewer.setValue(graph.error)
-          }          
+            viewer.setValue(graph.error);
+          }
           break;
       }
       
