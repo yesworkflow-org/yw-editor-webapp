@@ -4,6 +4,18 @@
 
   var MainController = function($scope, $http) {
 
+    var config;
+
+    var onEditorConfigReceived = function(response) {
+      config = response.data;
+      config.graphServiceUrlBase = "http://" + config.graphServiceHost + 
+                                ":" + config.graphServicePort + 
+                                "/api/" + config.graphServiceApiVersion;
+    } 
+
+    $http.get("/api/v1/config")
+        .then(onEditorConfigReceived);
+
     var editor = ace.edit("editor");
     var viewer = ace.edit("viewer");
     var graph = {};
@@ -34,13 +46,16 @@
 
 
     $scope.getGraph = function() {
-      $http.post(
-        "http://localhost:8081/api/v1/graph/",
-        {
-            language: $scope.language,
-            code: editor.getValue()
-        })
-        .then(onGraphComplete);
+
+      if (config) {
+        $http.post(
+          config.graphServiceUrlBase + "/graph",
+          {
+              language: $scope.language,
+              code: editor.getValue()
+          })
+          .then(onGraphComplete);
+      }
     }
 
     var onGraphComplete = function(response) {
