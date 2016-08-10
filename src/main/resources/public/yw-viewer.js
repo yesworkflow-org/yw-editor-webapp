@@ -44,8 +44,8 @@
 
     $scope.viewerModeChange = function() {
       updateViewer();
+      viewer.navigateTo(0,0);
     }
-
 
     $scope.getGraph = function() {
 
@@ -117,30 +117,54 @@
 
     function updateSvgSize() {
 
-      var body_bbox = body.node().getClientRects()[0];
-      var svg_div_bbox = svg_div.node().getClientRects()[0];
+      if ($scope.viewerZoom !== "fit") {
 
-      var div_width = svg_div_bbox.width - 5;
-      var div_height = body_bbox.height - 5;
-
-      if (div_width >= svg_native_width && div_height >= svg_native_height) {
-
-        svg.attr("width", svg_native_width);
-        svg.attr("height", svg_native_height);
+        var zoom = parseInt($scope.viewerZoom);
+        svg.attr("width", svg_native_width * zoom / 100);
+        svg.attr("height", svg_native_height * zoom / 100);
 
       } else {
 
-        var fit_width_zoom = div_width / svg_native_width;
-        var fit_height_zoom = div_height / svg_native_height;
-        
-        if (fit_height_zoom > fit_width_zoom) {
-          svg.attr("width", div_width);
-          svg.attr("height", svg_native_height * fit_width_zoom);
+        var body_bbox = body.node().getClientRects()[0];
+        var svg_div_bbox = svg_div.node().getClientRects()[0];
+
+        var div_width = svg_div_bbox.width - 5;
+        var div_height = body_bbox.height - 5;
+
+        if (div_width >= svg_native_width && div_height >= svg_native_height) {
+
+          svg.attr("width", svg_native_width);
+          svg.attr("height", svg_native_height);
+
         } else {
-          svg.attr("height", div_height);
-          svg.attr("width", svg_native_width * fit_height_zoom);
+
+          var fit_width_zoom = div_width / svg_native_width;
+          var fit_height_zoom = div_height / svg_native_height;
+          
+          if (fit_height_zoom > fit_width_zoom) {
+            svg.attr("width", div_width);
+            svg.attr("height", svg_native_height * fit_width_zoom);
+          } else {
+            svg.attr("height", div_height);
+            svg.attr("width", svg_native_width * fit_height_zoom);
+          }
         }
       }
+    }
+
+    $scope.onScriptSelect = function() {
+      $scope.loadSample($scope.sampleToLoad);
+    }
+
+    var onSampleLoaded = function(response) {
+      editor.setValue(response.data);
+      editor.navigateTo(0,0);
+      $scope.getGraph();
+    }
+
+    $scope.loadSample = function(script) {
+        $http.get("samples/" + script)
+          .then(onSampleLoaded);
     }
 
     function onGraphViewerResize() {
@@ -151,10 +175,11 @@
     window.addEventListener("resize", onGraphViewerResize);
 
     $scope.theme = "ace/theme/xcode";
-    $scope.language = "r";
+    $scope.language = "python";
     $scope.viewerMode = "skeleton";
     $scope.showGrapher = false;
-    $scope.themeChange();
+    $scope.viewerZoom="100";
+    $scope.sampleToLoad="blank.py";
     $scope.languageChange();
     $scope.graphSvg = '';
     
@@ -168,14 +193,8 @@
     var body = d3.select("#script");
     var svg_div = d3.select('#grapher');
 
-    editor.setShowPrintMargin(false);
-    editor.setValue(
-      "# Enter your code and YesWorkflow annotations here:\n" +
-      "\n" +
-      "# @begin MyScript\n" +
-      "\n" +
-      "# @end MyScript\n");
-    editor.clearSelection();
+    editor.setShowPrintMargin(false); 
+    $scope.loadSample("blank.py");
   };
 
   app.controller("MainController", ["$scope", "$http", MainController]);
