@@ -18,7 +18,9 @@
 
     var editor = ace.edit("editor");
     var viewer = ace.edit("viewer");
-    var graph = {};
+    var graph = {};    
+    var svg_native_width = 1;
+    var svg_native_height = 1;
 
     editor.getSession().on('change', function(e) {
         $scope.getGraph();
@@ -94,8 +96,10 @@
             var svgElement = graph.svg.substring(svgElementStart);
             d3.select('#grapher').html(svgElement);
             svg = d3.select('svg');
-            // svg.attr("width", "900");
-            // svg.attr("height", "900");
+            svg.attr("preserveAspectRatio", "xMinYMin meet");
+            svg_native_width = parseInt(svg.attr("width").slice(0, -2));
+            svg_native_height = parseInt(svg.attr("height").slice(0, -2));
+            updateSvgSize();
           } else {
             $scope.showGrapher = false;
             viewer.setValue(graph.error);
@@ -110,6 +114,42 @@
       viewer.clearSelection();
     };
     
+
+    function updateSvgSize() {
+
+      var body_bbox = body.node().getClientRects()[0];
+      var svg_div_bbox = svg_div.node().getClientRects()[0];
+
+      var div_width = svg_div_bbox.width - 5;
+      var div_height = body_bbox.height - 5;
+
+      if (div_width >= svg_native_width && div_height >= svg_native_height) {
+
+        svg.attr("width", svg_native_width);
+        svg.attr("height", svg_native_height);
+
+      } else {
+
+        var fit_width_zoom = div_width / svg_native_width;
+        var fit_height_zoom = div_height / svg_native_height;
+        
+        if (fit_height_zoom > fit_width_zoom) {
+          svg.attr("width", div_width);
+          svg.attr("height", svg_native_height * fit_width_zoom);
+        } else {
+          svg.attr("height", div_height);
+          svg.attr("width", svg_native_width * fit_height_zoom);
+        }
+      }
+    }
+
+    function onGraphViewerResize() {
+      updateSvgSize();
+      $scope.$apply();
+    }
+
+    window.addEventListener("resize", onGraphViewerResize);
+
     $scope.theme = "ace/theme/xcode";
     $scope.language = "r";
     $scope.viewerMode = "skeleton";
@@ -124,6 +164,9 @@
     viewer.setHighlightGutterLine(false);
     viewer.renderer.setShowGutter(false);
     viewer.session.setMode( "ace/mode/java" );
+
+    var body = d3.select("#script");
+    var svg_div = d3.select('#grapher');
 
     editor.setShowPrintMargin(false);
     editor.setValue(
