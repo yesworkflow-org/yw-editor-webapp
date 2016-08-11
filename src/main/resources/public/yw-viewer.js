@@ -2,7 +2,7 @@
 
   var app = angular.module("yw-editor-app", ['ngSanitize']);
 
-  var MainController = function($scope, $http) {
+  var MainController = function($scope, $http, $timeout) {
 
     var config;
 
@@ -177,6 +177,10 @@
       $scope.$apply();
     }
 
+    var onLoadInitialScript = function() {
+       $scope.loadSample($scope.sampleToLoad);
+    }
+
     window.addEventListener("resize", onGraphViewerResize);
 
     $scope.theme = "ace/theme/xcode";
@@ -194,12 +198,11 @@
     viewer.setHighlightGutterLine(false);
     viewer.renderer.setShowGutter(false);
     viewer.session.setMode( "ace/mode/java" );
+    editor.setShowPrintMargin(false);
 
-
-    editor.setShowPrintMargin(false); 
-    $scope.loadSample("helloworld.py");
+    $timeout(onLoadInitialScript, 100);
   };
 
-  app.controller("MainController", ["$scope", "$http", MainController]);
+  app.controller("MainController", ["$scope", "$http", "$timeout", MainController]);
 
 }());
