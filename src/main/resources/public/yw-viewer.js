@@ -8,9 +8,9 @@
 
     var onEditorConfigReceived = function(response) {
       config = response.data;
-      config.graphServiceUrlBase = "http://" + config.graphServiceHost + 
-                                ":" + config.graphServicePort + 
-                                "/api/" + config.graphServiceApiVersion;
+      config.graphServiceUrlBase =  "http://" + config.graphServiceHost + 
+                                    ":"       + config.graphServicePort + 
+                                    "/api/"   + config.graphServiceApiVersion;
     } 
 
     $http.get("/api/v1/config")
@@ -31,10 +31,8 @@
     }
 
     $scope.themeChange = function() {
-      
       editor.setTheme( $scope.theme );
       viewer.setTheme( $scope.theme );
-      
       if ($scope.theme == "ace/theme/xcode") {
         $scope.background = "#fcfcfc";
       } else {
@@ -42,7 +40,7 @@
       }
     }
 
-    $scope.viewerModeChange = function() {
+    $scope.onViewerChange = function() {
       updateViewer();
       viewer.navigateTo(0,0);
     }
@@ -64,6 +62,10 @@
       graph = response.data;
       updateViewer();
     } 
+
+    $scope.onZoomSelect = function() {
+      $scope.getGraph();
+    }
     
     var updateViewer = function() {
       
@@ -92,14 +94,7 @@
         case "graph":
           if (graph.svg) {
             $scope.showGrapher = true;
-            var svgElementStart = graph.svg.search("<svg");
-            var svgElement = graph.svg.substring(svgElementStart);
-            d3.select('#grapher').html(svgElement);
-            svg = d3.select('svg');
-            svg.attr("preserveAspectRatio", "xMinYMin meet");
-            svg_native_width = parseInt(svg.attr("width").slice(0, -2));
-            svg_native_height = parseInt(svg.attr("height").slice(0, -2));
-            updateSvgSize();
+            updateSvg();
           } else {
             $scope.showGrapher = false;
             viewer.setValue(graph.error);
@@ -114,8 +109,18 @@
       viewer.clearSelection();
     };
     
+    var updateSvg = function() {
 
-    function updateSvgSize() {
+      if (graph.svg == null) return;
+
+      var svgElementStart = graph.svg.search("<svg");
+      var svgElement = graph.svg.substring(svgElementStart);
+      d3.select('#grapher').html(svgElement);
+
+      svg = d3.select('svg');
+      svg.attr("preserveAspectRatio", "xMinYMin meet");
+      svg_native_width = parseInt(svg.attr("width").slice(0, -2));
+      svg_native_height = parseInt(svg.attr("height").slice(0, -2));
 
       if ($scope.viewerZoom !== "fit") {
 
@@ -125,11 +130,11 @@
 
       } else {
 
-        var body_bbox = body.node().getClientRects()[0];
-        var svg_div_bbox = svg_div.node().getClientRects()[0];
+        var script_div = d3.select("#script").node();
+        var viewer_container_div = d3.select("#viewer-container").node();
 
-        var div_width = svg_div_bbox.width - 5;
-        var div_height = body_bbox.height - 5;
+        var div_width = viewer_container_div.getClientRects()[0].width - 40;
+        var div_height = viewer_container_div.getClientRects()[0].height - 40;
 
         if (div_width >= svg_native_width && div_height >= svg_native_height) {
 
@@ -168,7 +173,7 @@
     }
 
     function onGraphViewerResize() {
-      updateSvgSize();
+      updateSvg();
       $scope.$apply();
     }
 
@@ -176,10 +181,10 @@
 
     $scope.theme = "ace/theme/xcode";
     $scope.language = "python";
-    $scope.viewerMode = "skeleton";
+    $scope.viewerMode = "graph";
     $scope.showGrapher = false;
     $scope.viewerZoom="100";
-    $scope.sampleToLoad="blank.py";
+    $scope.sampleToLoad="helloworld.py";
     $scope.languageChange();
     $scope.graphSvg = '';
     
@@ -190,11 +195,9 @@
     viewer.renderer.setShowGutter(false);
     viewer.session.setMode( "ace/mode/java" );
 
-    var body = d3.select("#script");
-    var svg_div = d3.select('#grapher');
 
     editor.setShowPrintMargin(false); 
-    $scope.loadSample("blank.py");
+    $scope.loadSample("helloworld.py");
   };
 
   app.controller("MainController", ["$scope", "$http", MainController]);

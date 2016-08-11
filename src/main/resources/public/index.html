@@ -38,7 +38,7 @@
     
     <div class="styled-option">
       Viewer:
-      <select ng-model="viewerMode" ng-change="viewerModeChange()">
+      <select ng-model="viewerMode" ng-change="onViewerChange()">
         <option value="skeleton">Skeleton</option>
         <option value="dot">Dot</option>
         <option value="graph">Graph</option>
@@ -47,7 +47,7 @@
 
     <div class="styled-option">
       Zoom:
-      <select ng-model="viewerZoom" ng-change="onGraphViewerResize()">
+      <select ng-model="viewerZoom" ng-change="onZoomSelect()">
         <option value="25">25%</option>
         <option value="50">50%</option>
         <option value="75">75%</option>
@@ -55,8 +55,7 @@
         <option value="150">150%</option>
         <option value="200">200%</option>
         <option value="300">300%</option>
-        <option value="500">500%</option>
-        <option value="fit">Fit window</option>
+        <option value="fit">Fit in window</option>
       </select>
     </div>
 
@@ -81,6 +80,9 @@
     <div id="viewer-container">
       <pre id="viewer" ng-hide="showGrapher"></pre>
       <div id="grapher" class="dragscroll" ng-show="showGrapher">
+        <svg width="10pt" height="10pt" viewBox="0.00 0.00 10.00 10.00" 
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        </svg>
       </div>
     </div>
   
