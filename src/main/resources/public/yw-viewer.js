@@ -31,13 +31,21 @@
     }
 
     $scope.themeChange = function() {
-      editor.setTheme( $scope.theme );
-      viewer.setTheme( $scope.theme );
-      if ($scope.theme == "ace/theme/xcode") {
+
+      var aceTheme;
+      
+      if ($scope.theme == "light") {
+        aceTheme = "ace/theme/xcode";
         $scope.background = "#fcfcfc";
       } else {
+        aceTheme = "ace/theme/tomorrow_night";
         $scope.background = "#b0b0b0";
       }
+      
+      editor.setTheme(aceTheme);
+      viewer.setTheme(aceTheme);
+
+      updateSvg();
     }
 
     $scope.onViewerChange = function() {
@@ -122,6 +130,13 @@
       svg_native_width = parseInt(svg.attr("width").slice(0, -2));
       svg_native_height = parseInt(svg.attr("height").slice(0, -2));
 
+      var background = svg.select("polygon");
+      if ($scope.theme == "light") {
+        background.attr("fill", "white");
+      } else {
+        background.attr("fill", "#b0b0b0");
+      }
+
       if ($scope.viewerZoom !== "fit") {
 
         var zoom = parseInt($scope.viewerZoom);
@@ -183,7 +198,7 @@
 
     window.addEventListener("resize", onGraphViewerResize);
 
-    $scope.theme = "ace/theme/xcode";
+    $scope.theme = "light";
     $scope.language = "python";
     $scope.viewerMode = "graph";
     $scope.showGrapher = false;
