@@ -5,16 +5,18 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>YesWorkflow Editor</title>
+  <script src="https://cdn.jsdelivr.net/jquery/3.1.0/jquery.min.js" data-semver="3.1.0" data-require="jquery"></script>
   <script data-require="angular.js@*" data-semver="1.5.7" src="https://code.angularjs.org/1.5.7/angular.js"></script>
   <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
   <script src="https://code.angularjs.org/1.5.7/angular-sanitize.js"></script>
   <script src="lib/dragscroll/dragscroll.js"></script>
+  <script src="lib/resizer/resizer.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body ng-controller="MainController" style="background: {{background}}">
   
-  <div id="options" class="styled-options">
+  <div id="options">
     
     <div class="styled-option">
       Language:
@@ -73,19 +75,24 @@
   
   <div id="script">
     
-    <div id="editor-container">
-      <pre id="editor"></pre>
-    </div>
-    
-    <div id="viewer-container">
-      <pre id="viewer" ng-hide="showGrapher"></pre>
-      <div id="grapher" class="dragscroll" ng-show="showGrapher">
+    <pre id="editor"></pre>
+
+    <div id="viewer">
+      <pre id="text-viewer" ng-hide="showGraphViewer"></pre>
+      <div id="graph-viewer" class="dragscroll" ng-show="showGraphViewer" >
         <svg width="10pt" height="10pt" viewBox="0.00 0.00 10.00 10.00" 
              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         </svg>
       </div>
     </div>
-  
+    
+  	<div id="script-resizer" 
+  		resizer="vertical" 
+  		resizer-width="7" 
+  		resizer-left="#editor" 
+  		resizer-right="#viewer">
+  	</div>
+
   </div>
   
   <script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript" charset="utf-8"></script>

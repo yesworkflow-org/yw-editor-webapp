@@ -1,6 +1,6 @@
 (function() {
 
-  var app = angular.module("yw-editor-app", ['ngSanitize']);
+  var app = angular.module("yw-editor-app", ['ngSanitize', 'mc.resizer']);
 
   var MainController = function($scope, $http, $timeout) {
 
@@ -17,7 +17,7 @@
         .then(onEditorConfigReceived);
 
     var editor = ace.edit("editor");
-    var viewer = ace.edit("viewer");
+    var viewer = ace.edit("text-viewer");
     var graph = {};    
     var svg_native_width = 1;
     var svg_native_height = 1;
@@ -83,7 +83,7 @@
         
         case "skeleton":
           if (graph.skeleton) {
-            $scope.showGrapher = false;
+            $scope.showGraphViewer = false;
             viewer.setValue(graph.skeleton);
           } else {
             viewer.setValue(graph.error)
@@ -91,7 +91,7 @@
           break;
         
         case "dot":
-          $scope.showGrapher = false;
+          $scope.showGraphViewer = false;
           if (graph.dot) {
             viewer.setValue(graph.dot);
           } else {
@@ -101,10 +101,10 @@
           
         case "graph":
           if (graph.svg) {
-            $scope.showGrapher = true;
+            $scope.showGraphViewer = true;
             updateSvg();
           } else {
-            $scope.showGrapher = false;
+            $scope.showGraphViewer = false;
             viewer.setValue(graph.error);
           }
           break;
@@ -123,7 +123,7 @@
 
       var svgElementStart = graph.svg.search("<svg");
       var svgElement = graph.svg.substring(svgElementStart);
-      d3.select('#grapher').html(svgElement);
+      d3.select('#graph-viewer').html(svgElement);
 
       svg = d3.select('svg');
       svg.attr("preserveAspectRatio", "xMinYMin meet");
@@ -146,7 +146,7 @@
       } else {
 
         var script_div = d3.select("#script").node();
-        var viewer_container_div = d3.select("#viewer-container").node();
+        var viewer_container_div = d3.select("#viewer").node();
 
         var div_width = viewer_container_div.getClientRects()[0].width - 40;
         var div_height = viewer_container_div.getClientRects()[0].height - 40;
@@ -201,7 +201,7 @@
     $scope.theme = "light";
     $scope.language = "python";
     $scope.viewerMode = "graph";
-    $scope.showGrapher = false;
+    $scope.showGraphViewer = false;
     $scope.viewerZoom="100";
     $scope.sampleToLoad="helloworld.py";
     $scope.languageChange();

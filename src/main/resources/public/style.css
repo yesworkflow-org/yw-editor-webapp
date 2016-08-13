@@ -16,7 +16,7 @@ body {
 
 .styled-option {
   margin: 10px;
-  text-align: left;
+  text-align: left; 
   vertical-align: bottom;
 }
 
@@ -45,30 +45,12 @@ body {
     margin: 8px;
 }
 
-#editor-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 50%;
-    margin: 0;
-}
-
-#viewer-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 50%;
-    margin: 0;
-  }
-
 #editor {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    right: 4px;
+    width: 600px;
     margin: 0;
     border: 1px solid black;
 }
@@ -77,13 +59,23 @@ body {
     position: absolute;
     top: 0;
     bottom: 0;
+    left: 608px;
     right: 0;
-    left: 4px;
     margin: 0;
     border: 1px solid black;
+  }
+
+#text-viewer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 4px;
+    overflow: auto;
 }
 
-#grapher {
+#graph-viewer {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -92,6 +84,14 @@ body {
     margin: 0;
     padding-top: 20px;
     padding-left: 20px;
-    border: 1px solid black;
     overflow: auto;
+}
+
+#script-resizer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 602px;
+    width: 6px;
+    cursor: ew-resize;
 }
