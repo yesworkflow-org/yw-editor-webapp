@@ -14,15 +14,17 @@ angular.module('mc.resizer', []).directive('resizer', function($document) {
 		function mousemove(event) {
 
 			if ($attrs.resizer == 'vertical') {
-				// Handle vertical resizer
+
 				var x = event.pageX - container[0].offsetLeft - $attrs.resizerWidth / 2;
 
 				if ( x < - $attrs.resizerWidth) {
 					x = - $attrs.resizerWidth;
 				}
 				
-				if ($attrs.resizerMax && x > $attrs.resizerMax) {
-					x = parseInt($attrs.resizerMax);
+				var containerRight = container[0].offsetWidth;
+
+				if (x > containerRight) {
+					x = containerRight;
 				}
 
 				$element.css({
