@@ -2,6 +2,8 @@ angular.module('mc.resizer', []).directive('resizer', function($document) {
 
 	return function($scope, $element, $attrs) {
 
+		var container = $element.parent();
+
 		$element.on('mousedown', function(event) {
 			event.preventDefault();
 
@@ -13,8 +15,12 @@ angular.module('mc.resizer', []).directive('resizer', function($document) {
 
 			if ($attrs.resizer == 'vertical') {
 				// Handle vertical resizer
-				var x = event.pageX - 172;
+				var x = event.pageX - container[0].offsetLeft - $attrs.resizerWidth / 2;
 
+				if ( x < - $attrs.resizerWidth) {
+					x = - $attrs.resizerWidth;
+				}
+				
 				if ($attrs.resizerMax && x > $attrs.resizerMax) {
 					x = parseInt($attrs.resizerMax);
 				}
