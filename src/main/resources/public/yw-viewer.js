@@ -28,6 +28,7 @@
 
     $scope.languageChange = function() {
       editor.session.setMode( "ace/mode/" + $scope.language );
+      $scope.getGraph();
     }
 
     $scope.themeChange = function() {
