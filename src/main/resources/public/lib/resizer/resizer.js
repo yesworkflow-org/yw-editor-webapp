@@ -26,6 +26,7 @@ angular.module('mc.resizer', []).directive('resizer', function($document) {
 			$(leftPanel).css({ width: x + 'px' });
 			$(separator).css({ left: x + 'px'});
 			$(rightPanel).css({ left: (x + separatorWidth) + 'px' });
+			$scope.onParentResize();
 		}
 
 		function mousemove(event) {
@@ -41,8 +42,6 @@ angular.module('mc.resizer', []).directive('resizer', function($document) {
 			}
 
 			moveSliderTo(x);
-
-			// $scope.$apply();
 		}
 
 		function mouseup() {

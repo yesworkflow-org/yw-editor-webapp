@@ -117,6 +117,10 @@
       viewer.clearSelection();
     };
     
+    $scope.onParentResize = function() {
+      updateSvg();
+    }
+
     var updateSvg = function() {
 
       if (graph.svg == null) return;
@@ -149,7 +153,14 @@
         var viewer_container_div = d3.select("#viewer").node();
 
         var div_width = viewer_container_div.getClientRects()[0].width - 40;
+        if (div_width < 1) {
+          div_width = 1;
+        }
+
         var div_height = viewer_container_div.getClientRects()[0].height - 40;
+        if (div_height < 1) {
+          div_height = 1;
+        }
 
         if (div_width >= svg_native_width && div_height >= svg_native_height) {
 
