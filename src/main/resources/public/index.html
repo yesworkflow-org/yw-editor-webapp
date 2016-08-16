@@ -71,6 +71,70 @@
       </select>
     </div>
 
+    <div class="styled-option">
+      Graph:
+      <select ng-model="graphView" ng-change="getGraph()">
+        <option value="process">Process</option>
+        <option value="data">Data</option>
+        <option value="combined">Combined</option>
+      </select>
+    </div>
+
+    <div class="styled-option">
+      Direction:
+      <select ng-model="graphLayout" ng-change="getGraph()">
+        <option value="tb">Down</option>
+        <option value="lr">Right</option>
+        <option value="bt">Up</option>
+        <option value="rl">Left</option>
+      </select>
+    </div>
+
+    <div class="styled-option">
+      Parameters:
+      <select ng-model="graphParams" ng-change="getGraph()">
+        <option value="show">Show</option>
+        <option value="reduce">Reduce</option>
+        <option value="hide">Hide</option>
+      </select>
+    </div>
+
+    <div class="styled-option">
+      Ports:
+      <select ng-model="graphPorts" ng-change="getGraph()">
+        <option value="relax">Relax</option>
+        <option value="group">Group</option>
+        <option value="hide">Hide</option>
+      </select>
+    </div>
+
+    <div class="styled-option">
+      Data:
+      <select ng-model="dataLabel" ng-change="getGraph()">
+        <option value="name">Show name</option>
+        <option value="uri">Show URI</option>
+        <option value="both">Show both</option>
+      </select>
+    </div>
+
+    <div class="styled-option">
+      Programs:
+      <select ng-model="programLabel" ng-change="getGraph()">
+        <option value="name">Show name</option>
+        <option value="description">Show description</option>
+        <option value="both">Show both</option>
+      </select>
+    </div>
+
+    <div class="styled-option">
+      Edges:
+      <select ng-model="edgeLabels" ng-change="getGraph()">
+        <option value="show">Show labels</option>
+        <option value="hide">Hide labels</option>
+      </select>
+    </div>
+
+
   </div>
   
   <div id="script">

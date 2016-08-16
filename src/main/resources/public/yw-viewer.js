@@ -61,7 +61,15 @@
           config.graphServiceUrlBase + "/graph",
           {
               language: $scope.language,
-              code: editor.getValue()
+              code: editor.getValue(),
+              properties: "graph.view = " + $scope.graphView + "\n" +
+                          "graph.layout = " + $scope.graphLayout + "\n" +
+                          "graph.params = " + $scope.graphParams + "\n" +
+                          "graph.portlayout = " + $scope.graphPorts + "\n" +
+                          "graph.datalabel = " + $scope.dataLabel + "\n" +
+                          "graph.programlabel = " + $scope.programLabel + "\n" +
+                          "graph.edgelabels = " + $scope.edgeLabels + "\n" +
+                          "graph.dotcomments = on\n"
           })
           .then(onGraphComplete);
       }
@@ -218,7 +226,15 @@
     $scope.sampleToLoad="helloworld.py";
     $scope.languageChange();
     $scope.graphSvg = '';
-    
+
+    $scope.graphView = 'combined';
+    $scope.graphLayout = 'tb';
+    $scope.graphParams = "reduce";
+    $scope.graphPorts = "relax";
+    $scope.dataLabel = "both";
+    $scope.programLabel = "both";;
+    $scope.edgeLabels = "hide"
+
     viewer.setReadOnly(true);
     viewer.setHighlightActiveLine(false);
     viewer.setShowPrintMargin(false);
