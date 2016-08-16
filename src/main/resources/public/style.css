@@ -62,7 +62,9 @@ body {
     left: 608px;
     right: 0;
     margin: 0;
+    padding: 0;
     border: 1px solid black;
+    border-radius: 4px;
   }
 
 #text-viewer {
@@ -71,7 +73,8 @@ body {
     bottom: 0;
     right: 0;
     left: 0;
-    margin: 4px;
+    padding: 0;
+    margin: 0;
     overflow: auto;
 }
 
@@ -95,3 +98,10 @@ body {
     width: 6px;
     cursor: ew-resize;
 }
+
+#viewer-mode-btn-group {
+    position: absolute;
+    top: 18px;
+    right: 21px;
+}
+

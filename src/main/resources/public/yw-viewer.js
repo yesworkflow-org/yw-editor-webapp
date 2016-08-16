@@ -1,6 +1,6 @@
 (function() {
 
-  var app = angular.module("yw-editor-app", ['ngSanitize', 'mc.resizer']);
+  var app = angular.module("yw-editor-app", ['ngSanitize', 'mc.resizer', 'ngAnimate', 'ui.bootstrap']);
 
   var MainController = function($scope, $http, $timeout) {
 
@@ -49,7 +49,7 @@
       updateSvg();
     }
 
-    $scope.onViewerChange = function() {
+    $scope.viewerModeChange = function() {
       updateViewer();
       viewer.navigateTo(0,0);
     }

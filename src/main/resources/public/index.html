@@ -8,9 +8,12 @@
   <script src="https://cdn.jsdelivr.net/jquery/3.1.0/jquery.min.js" data-semver="3.1.0" data-require="jquery"></script>
   <script data-require="angular.js@*" data-semver="1.5.7" src="https://code.angularjs.org/1.5.7/angular.js"></script>
   <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.2.js"></script>
   <script src="https://code.angularjs.org/1.5.7/angular-sanitize.js"></script>
   <script src="lib/dragscroll/dragscroll.js"></script>
   <script src="lib/resizer/resizer.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -35,15 +38,6 @@
       <select ng-model="theme" ng-change="themeChange()">
         <option value="light">Light</option>
         <option value="dark">Dark</option>
-      </select>
-    </div>
-    
-    <div class="styled-option">
-      Viewer:
-      <select ng-model="viewerMode" ng-change="onViewerChange()">
-        <option value="skeleton">Skeleton</option>
-        <option value="dot">Dot</option>
-        <option value="graph">Graph</option>
       </select>
     </div>
 
@@ -156,6 +150,12 @@
   		resizer-left="#editor" 
   		resizer-right="#viewer">
   	</div>
+
+    <div id="viewer-mode-btn-group" class="btn-group btn-group-xs">
+        <label class="btn btn-default" ng-model="viewerMode" uib-btn-radio="'skeleton'" ng-change="viewerModeChange()">Outline</label>
+        <label class="btn btn-default" ng-model="viewerMode" uib-btn-radio="'dot'" ng-change="viewerModeChange()">Dot</label>
+        <label class="btn btn-default" ng-model="viewerMode" uib-btn-radio="'graph'" ng-change="viewerModeChange()">Graph</label>
+    </div>
 
   </div>
   
