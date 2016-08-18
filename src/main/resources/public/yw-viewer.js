@@ -243,6 +243,8 @@
     viewer.session.setMode( "ace/mode/java" );
     editor.setShowPrintMargin(false);
 
+    $scope.language = 'python';
+
     $timeout(onLoadInitialScript, 100);
   };
 

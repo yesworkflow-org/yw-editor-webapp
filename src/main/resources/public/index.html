@@ -20,26 +20,6 @@
 <body ng-controller="MainController" style="background: {{background}}">
   
   <div id="options">
-    
-    <div class="styled-option">
-      Language:
-      <select ng-model="language" ng-change="languageChange()">
-        <option value="sh">Bash</option>
-        <option value="c_cpp">C/C++</option>
-        <option value="java">Java</option>
-        <option value="matlab">MATLAB</option>
-        <option value="python">Python</option>
-        <option value="r">R</option>
-      </select>
-    </div>
-    
-    <div class="styled-option">
-      Theme:
-      <select ng-model="theme" ng-change="themeChange()">
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
-    </div>
 
     <div class="styled-option">
       Zoom:
@@ -152,13 +132,50 @@
   	</div>
 
     <div id="viewer-mode-btn-group" class="btn-group btn-group-xs">
-        <label class="btn btn-default" ng-model="viewerMode" uib-btn-radio="'skeleton'" ng-change="viewerModeChange()">Outline</label>
-        <label class="btn btn-default" ng-model="viewerMode" uib-btn-radio="'dot'" ng-change="viewerModeChange()">Dot</label>
-        <label class="btn btn-default" ng-model="viewerMode" uib-btn-radio="'graph'" ng-change="viewerModeChange()">Graph</label>
+        
+        <label class="btn btn-default" uib-btn-radio="'skeleton'" 
+               ng-model="viewerMode" ng-change="viewerModeChange()" 
+               title="View YW-defined outline of program">Outline</label>
+    
+        <label class="btn btn-default"  uib-btn-radio="'dot'" 
+               ng-model="viewerMode" ng-change="viewerModeChange()"
+               title="View dot source for graphic representation">Dot</label>
+        
+        <label class="btn btn-default" uib-btn-radio="'graph'" 
+               ng-model="viewerMode" ng-change="viewerModeChange()"
+               title="View graphic representation of program">Graph</label>
     </div>
 
   </div>
   
+  <div id="bottom-toolbar">
+
+    <select class="editor-option" ng-model="language" ng-change="languageChange()" title="Select programming language">
+      <option value="sh">Bash</option>
+      <option value="c_cpp">C/C++</option>
+      <option value="java">Java</option>
+      <option value="matlab">MATLAB</option>
+      <option value="python">Python</option>
+      <option value="r">R</option>
+    </select>
+
+    <div class="btn-group btn-group-xs">
+        
+        <label class="btn btn-default" uib-btn-radio="'light'" 
+               ng-model="theme" ng-change="themeChange()"
+               title="Apply the light editor theme">Light</label>
+    
+        <label class="btn btn-default"  uib-btn-radio="'dark'" 
+              ng-model="theme" ng-change="themeChange()"
+               title="Apply the dark editor theme">Dark</label>
+        
+    </div>
+  </div>
+
+
+
+  </div>
+
   <script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" 
           type="text/javascript" charset="utf-8"></script>
   <script src="yw-viewer.js"></script>
