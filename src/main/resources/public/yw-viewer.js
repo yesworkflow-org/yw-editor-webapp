@@ -127,7 +127,9 @@
     };
     
     $scope.onParentResize = function() {
-      updateSvg();
+      onGraphViewerResize();
+      editor.resize();
+      viewer.resize();
     }
 
     var updateSvg = function() {
