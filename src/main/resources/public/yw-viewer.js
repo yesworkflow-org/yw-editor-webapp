@@ -229,11 +229,11 @@
 
     $scope.graphView = 'combined';
     $scope.graphLayout = 'tb';
-    $scope.graphParams = "reduce";
-    $scope.graphPorts = "relax";
-    $scope.dataLabel = "both";
-    $scope.programLabel = "both";;
-    $scope.edgeLabels = "hide"
+    $scope.graphParams = 'reduce';
+    $scope.graphPorts = 'relax';
+    $scope.dataLabel = 'both';
+    $scope.programLabel = 'both';
+    $scope.edgeLabels = 'hide';
 
     viewer.setReadOnly(true);
     viewer.setHighlightActiveLine(false);
