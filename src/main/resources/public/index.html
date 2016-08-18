@@ -22,45 +22,12 @@
   <div id="options">
 
     <div class="styled-option">
-      Zoom:
-      <select ng-model="viewerZoom" ng-change="onZoomSelect()">
-        <option value="25">25%</option>
-        <option value="50">50%</option>
-        <option value="75">75%</option>
-        <option value="100">100%</option>
-        <option value="150">150%</option>
-        <option value="200">200%</option>
-        <option value="300">300%</option>
-        <option value="fit">Fit in window</option>
-      </select>
-    </div>
-
-    <div class="styled-option">
       Sample:
       <select ng-model="sampleToLoad" ng-change="onScriptSelect()">
         <option value="blank.py">blank</option>
         <option value="helloworld.py">Hello</option>
         <option value="greetings.py">Greetings</option>
         <option value="simulate_data_collection.py">Crystals</option>
-      </select>
-    </div>
-
-    <div class="styled-option">
-      Graph:
-      <select ng-model="graphView" ng-change="getGraph()">
-        <option value="process">Process</option>
-        <option value="data">Data</option>
-        <option value="combined">Combined</option>
-      </select>
-    </div>
-
-    <div class="styled-option">
-      Direction:
-      <select ng-model="graphLayout" ng-change="getGraph()">
-        <option value="tb">Down</option>
-        <option value="lr">Right</option>
-        <option value="bt">Up</option>
-        <option value="rl">Left</option>
       </select>
     </div>
 
@@ -159,20 +126,38 @@
       <option value="r">R</option>
     </select>
 
-    <div class="btn-group btn-group-xs">
-        
+    <div class="btn-group btn-group-xs editor-option">        
         <label class="btn btn-default" uib-btn-radio="'light'" 
                ng-model="theme" ng-change="themeChange()"
                title="Apply the light editor theme">Light</label>
-    
         <label class="btn btn-default"  uib-btn-radio="'dark'" 
               ng-model="theme" ng-change="themeChange()"
                title="Apply the dark editor theme">Dark</label>
-        
     </div>
-  </div>
 
+    <select class="viewer-option" ng-model="viewerZoom" ng-change="onZoomSelect()" title="Select graphics zoom level">
+      <option value="fit">Fit</option>
+      <option value="25">25%</option>
+      <option value="50">50%</option>
+      <option value="75">75%</option>
+      <option value="100">100%</option>
+      <option value="150">150%</option>
+      <option value="200">200%</option>
+      <option value="300">300%</option>
+    </select>
 
+    <select class="viewer-option"  ng-model="graphView" ng-change="getGraph()"  title="Select workflow view">
+      <option value="process">Process</option>
+      <option value="data">Data</option>
+      <option value="combined">Combined</option>
+    </select>
+
+    <select class="viewer-option" ng-model="graphLayout" ng-change="getGraph()" title="Select dataflow direction">
+      <option value="rl">Left</option>
+      <option value="lr">Right</option>
+      <option value="bt">Up</option>
+      <option value="tb">Down</option>
+    </select>
 
   </div>
 

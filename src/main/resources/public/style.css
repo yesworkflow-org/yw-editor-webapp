@@ -118,28 +118,16 @@ body {
     outline:0px;
 }
 
-#bottom-toolbar .btn-group-xs>.btn, .btn-xs {
-    line-height: normal;
-}
-
-#bottom-toolbar .btn-default {
-    float: left;
-    height: 18px;
-    text-align: left; 
-    vertical-align: middle;
-    outline:0px;
-}
-
-#bottom-toolbar .btn-group {
-    margin-left: 8px;
-}
-
 .viewer-option {
     margin-right: 8px;
     float: right;
     height: 18px;
-    text-align: left; 
-    vertical-align: bottom;
     background: #f0f0f0;
     border-radius: 4px;
+    outline:0px;
 }
+
+#bottom-toolbar .btn-group-xs>.btn, .btn-xs {
+    line-height: normal;
+}
+
