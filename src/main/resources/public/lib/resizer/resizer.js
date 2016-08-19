@@ -11,6 +11,8 @@ angular.module('mc.resizer', []).directive('resizer', function($document) {
 		var rightMinWidth = parseInt($attrs.rightMinWidth);
 
 		window.addEventListener("resize", onWindowResize);
+		moveSliderTo(container.offsetWidth / 2);
+		
 
 		function onWindowResize() {
 			if (container.offsetWidth - rightMinWidth < separator[0].offsetLeft) {
@@ -25,6 +27,8 @@ angular.module('mc.resizer', []).directive('resizer', function($document) {
 		});
 
 		function moveSliderTo(x) {
+			if ( x < leftMinWidth) x = leftMinWidth;
+			if (x > container.offsetWidth - rightMinWidth) x = container.offsetWidth - rightMinWidth;
 			$(leftPanel).css({ width: x + 'px' });
 			$(separator).css({ left: x + 'px' });
 			$(rightPanel).css({ left: (x + separatorWidth) + 'px' });
@@ -33,8 +37,6 @@ angular.module('mc.resizer', []).directive('resizer', function($document) {
 
 		function mousemove(event) {
 			var x = event.pageX - container.offsetLeft - separatorWidth / 2;
-			if ( x < leftMinWidth) x = leftMinWidth;
-			if (x > container.offsetWidth - rightMinWidth) x = container.offsetWidth - rightMinWidth;
 			moveSliderTo(x);
 		}
 

@@ -210,8 +210,11 @@
     }
 
     function onGraphViewerResize() {
-      updateSvg();
-      $scope.$apply();
+      setTimeout(function () {
+        $scope.$apply(function () {
+        updateSvg(); 
+        });
+      }, 100);
     }
 
     var onLoadInitialScript = function() {
