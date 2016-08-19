@@ -219,7 +219,7 @@
     $scope.language = "python";
     $scope.viewerMode = "graph";
     $scope.showGraphViewer = false;
-    $scope.viewerZoom="100";
+    $scope.viewerZoom="fit";
     $scope.sampleToLoad="helloworld.py";
     $scope.languageChange();
     $scope.graphSvg = '';

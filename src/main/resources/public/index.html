@@ -60,6 +60,25 @@
 
   </div>-->
   
+  <div id="top-toolbar">
+    
+    <div id="viewer-mode-btn-group" class="btn-group btn-group-xs viewer-option">
+        
+        <label class="btn btn-default" uib-btn-radio="'skeleton'" 
+               ng-model="viewerMode" ng-change="viewerModeChange()" 
+               title="View YW-defined outline of program">Outline</label>
+    
+        <label class="btn btn-default"  uib-btn-radio="'dot'" 
+               ng-model="viewerMode" ng-change="viewerModeChange()"
+               title="View dot source for graphic representation">Dot</label>
+        
+        <label class="btn btn-default" uib-btn-radio="'graph'" 
+               ng-model="viewerMode" ng-change="viewerModeChange()"
+               title="View graphic representation of program">Graph</label>
+    </div>
+
+  </div>
+
   <div id="script">
     
     <pre id="editor"></pre>
@@ -82,21 +101,6 @@
       right-min-width="66"
       >
   	</div>
-
-    <div id="viewer-mode-btn-group" class="btn-group btn-group-xs">
-        
-        <label class="btn btn-default" uib-btn-radio="'skeleton'" 
-               ng-model="viewerMode" ng-change="viewerModeChange()" 
-               title="View YW-defined outline of program">Outline</label>
-    
-        <label class="btn btn-default"  uib-btn-radio="'dot'" 
-               ng-model="viewerMode" ng-change="viewerModeChange()"
-               title="View dot source for graphic representation">Dot</label>
-        
-        <label class="btn btn-default" uib-btn-radio="'graph'" 
-               ng-model="viewerMode" ng-change="viewerModeChange()"
-               title="View graphic representation of program">Graph</label>
-    </div>
 
   </div>
   
