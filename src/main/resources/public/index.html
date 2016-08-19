@@ -13,23 +13,14 @@
   <script src="https://code.angularjs.org/1.5.7/angular-sanitize.js"></script>
   <script src="lib/dragscroll/dragscroll.js"></script>
   <script src="lib/resizer/resizer.js"></script>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.4/select.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body ng-controller="MainController" style="background: {{background}}">
   
   <!--<div id="options">
-
-    <div class="styled-option">
-      Sample:
-      <select ng-model="sampleToLoad" ng-change="onScriptSelect()">
-        <option value="blank.py">blank</option>
-        <option value="helloworld.py">Hello</option>
-        <option value="greetings.py">Greetings</option>
-        <option value="simulate_data_collection.py">Crystals</option>
-      </select>
-    </div>
 
     <div class="styled-option">
       Data:
@@ -61,7 +52,14 @@
   </div>-->
   
   <div id="top-toolbar">
-    
+
+    <select class="editor-option" ng-model="sampleToLoad" ng-change="onScriptSelect()" title="Select a sample script to load">
+        <option value="blank.py">blank</option>
+        <option value="helloworld.py">Hello</option>
+        <option value="greetings.py">Greetings</option>
+        <option value="simulate_data_collection.py">Crystals</option>
+    </select>
+
     <div id="viewer-mode-btn-group" class="btn-group btn-group-xs viewer-option">
         
         <label class="btn btn-default" uib-btn-radio="'skeleton'" 
@@ -114,6 +112,7 @@
       <option value="python">Python</option>
       <option value="r">R</option>
     </select>
+
 
     <div class="btn-group btn-group-xs editor-option">        
         <label class="btn btn-default" uib-btn-radio="'light'" ng-model="theme" ng-change="themeChange()"
