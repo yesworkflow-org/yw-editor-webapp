@@ -173,23 +173,15 @@
           div_height = 1;
         }
 
-        if (div_width >= svg_native_width && div_height >= svg_native_height) {
-
-          svg.attr("width", svg_native_width);
-          svg.attr("height", svg_native_height);
-
+        var fit_width_zoom = div_width / svg_native_width;
+        var fit_height_zoom = div_height / svg_native_height;
+        
+        if (fit_height_zoom > fit_width_zoom) {
+          svg.attr("width", div_width);
+          svg.attr("height", svg_native_height * fit_width_zoom);
         } else {
-
-          var fit_width_zoom = div_width / svg_native_width;
-          var fit_height_zoom = div_height / svg_native_height;
-          
-          if (fit_height_zoom > fit_width_zoom) {
-            svg.attr("width", div_width);
-            svg.attr("height", svg_native_height * fit_width_zoom);
-          } else {
-            svg.attr("height", div_height);
-            svg.attr("width", svg_native_width * fit_height_zoom);
-          }
+          svg.attr("height", div_height);
+          svg.attr("width", svg_native_width * fit_height_zoom);
         }
       }
     }
