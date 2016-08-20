@@ -1,6 +1,6 @@
 (function() {
 
-  var app = angular.module("yw-editor-app", ['ngSanitize', 'mc.resizer', 'ngAnimate', 'ui.bootstrap']);
+  var app = angular.module("yw-editor-app", ['ngSanitize', 'yw.divider', 'ngAnimate', 'ui.bootstrap']);
 
   var MainController = function($scope, $http, $timeout) {
 
@@ -17,7 +17,11 @@
         .then(onEditorConfigReceived);
 
     var editor = ace.edit("editor");
+    editor.$blockScrolling = Infinity;
+
     var viewer = ace.edit("text-viewer");
+    viewer.$blockScrolling = Infinity;
+
     var graph = {};    
     var svg_native_width = 1;
     var svg_native_height = 1;

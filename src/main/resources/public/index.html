@@ -12,7 +12,7 @@
   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.2.js"></script>
   <script src="https://code.angularjs.org/1.5.7/angular-sanitize.js"></script>
   <script src="lib/dragscroll/dragscroll.js"></script>
-  <script src="lib/resizer/resizer.js"></script>
+  <script src="lib/divider/divider.js"></script>
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
   <link href="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.4/select.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
@@ -90,15 +90,9 @@
       </div>
     </div>
     
-  	<div id="script-resizer" 
-  		resizer="vertical" 
-  		resizer-left="#editor" 
-  		resizer-right="#viewer"
-      left-min-width="66"
-  		resizer-width="8"
-      right-min-width="66"
-      >
-  	</div>
+  	<yw.divider id="script-divider" left-panel="#editor" right-panel="#viewer"
+         left-min-width="66" divider-width="8" right-min-width="66" left-panel-fraction="0.50">
+    </yw.divider>
 
   </div>
   
@@ -149,7 +143,7 @@
             uib-btn-checkbox btn-checkbox-true="'reduce'" btn-checkbox-false="'hide'"> Params </button>
 
     <button class="btn btn-default btn-xs viewer-option" ng-model="graphPorts" ng-change="getGraph()"
-            uib-btn-checkbox btn-checkbox-true="'group'" btn-checkbox-false="'hide'"> Ports </button>
+            uib-btn-checkbox btn-checkbox-true="'relax'" btn-checkbox-false="'hide'"> Ports </button>
 
   </div>
 
