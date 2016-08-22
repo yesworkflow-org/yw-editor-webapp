@@ -36,7 +36,11 @@
     }
 
     $scope.keybindingeChange = function() {
-      editor.setKeyboardHandler("ace/keyboard/" + $scope.keybinding);
+      if ($scope.keybinding === 'ace') {
+        editor.setKeyboardHandler(null);
+      } else {
+        editor.setKeyboardHandler("ace/keyboard/" + $scope.keybinding);
+      }
     }
 
     $scope.fontsizeChange = function() {
@@ -259,6 +263,8 @@
     viewer.renderer.setShowGutter(false);
     viewer.session.setMode( "ace/mode/java" );
     editor.setShowPrintMargin(false);
+
+    editor.setKeyboardHandler(null);
 
     $scope.language = 'python';
 
