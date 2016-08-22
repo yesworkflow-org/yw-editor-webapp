@@ -233,7 +233,7 @@
     $scope.keybinding = "ace";
     $scope.language = "python";
 
-    $scope.fontsize="18";
+    $scope.fontsize="12";
     $scope.fontsizeChange();
 
     $scope.viewerMode = "graph";
