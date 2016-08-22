@@ -107,6 +107,25 @@
       <option value="r">R</option>
     </select>
 
+    <select class="editor-option" ng-model="keybinding" ng-change="keybindingeChange()" title="Select keyboard mode">
+      <option value="ace">Ace</option>
+      <option value="emacs">Emacs</option>
+      <option value="vim">Vim</option>
+    </select>
+
+    <select class="editor-option" ng-model="fontsize" ng-change="fontsizeChange()" title="Set font size">
+      <option value="8">8</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="16">16</option>
+      <option value="18">18</option>
+      <option value="20">20</option>
+      <option value="24">24</option>
+    </select>
+
 
     <div class="btn-group btn-group-xs editor-option">        
         <label class="btn btn-default" uib-btn-radio="'light'" ng-model="theme" ng-change="themeChange()"

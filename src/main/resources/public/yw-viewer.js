@@ -35,6 +35,16 @@
       $scope.getGraph();
     }
 
+    $scope.keybindingeChange = function() {
+      editor.setKeyboardHandler("ace/keyboard/" + $scope.keybinding);
+    }
+
+    $scope.fontsizeChange = function() {
+      editor.setFontSize(parseInt($scope.fontsize));
+      viewer.setFontSize(parseInt($scope.fontsize));
+    }
+
+
     $scope.themeChange = function() {
 
       var aceTheme;
@@ -220,7 +230,12 @@
     window.addEventListener("resize", onGraphViewerResize);
 
     $scope.theme = "light";
+    $scope.keybinding = "ace";
     $scope.language = "python";
+
+    $scope.fontsize="18";
+    $scope.fontsizeChange();
+
     $scope.viewerMode = "graph";
     $scope.showGraphViewer = false;
     $scope.viewerZoom="fit";
@@ -236,6 +251,7 @@
     $scope.programLabel = 'both';
     $scope.edgeLabels = 'hide';
 
+    
     viewer.setReadOnly(true);
     viewer.setHighlightActiveLine(false);
     viewer.setShowPrintMargin(false);
