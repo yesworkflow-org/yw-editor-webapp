@@ -146,22 +146,22 @@
 
     <div id="graph-layout-btn-group" class="btn-group btn-group-xs viewer-option">
         <label class="btn btn-default" uib-btn-radio="'tb'" ng-model="graphLayout" ng-change="getGraph()" 
-               title="Vertical dataflow "> Vert </label>
+               title="Vertical dataflow "> Down </label>
         <label class="btn btn-default"  uib-btn-radio="'lr'" ng-model="graphLayout" ng-change="getGraph()"
-               title="Horizontal dataflow"> Horiz </label>        
+               title="Horizontal dataflow"> Across </label>        
     </div>
 
-    <button class="btn btn-default btn-xs viewer-option" ng-model="showProcessNodes" ng-change="showProcessNodesChange()"
-            uib-btn-checkbox> Processes </button>
-
-    <button class="btn btn-default btn-xs viewer-option" ng-model="showDataNodes" ng-change="showDataNodesChange()"
-            uib-btn-checkbox> Data </button>
+    <button class="btn btn-default btn-xs viewer-option" ng-model="graphPorts" ng-change="getGraph()"
+            uib-btn-checkbox btn-checkbox-true="'relax'" btn-checkbox-false="'hide'"> Ports </button>
 
     <button class="btn btn-default btn-xs viewer-option" ng-model="graphParams" ng-change="getGraph()"
             uib-btn-checkbox btn-checkbox-true="'reduce'" btn-checkbox-false="'hide'"> Params </button>
 
-    <button class="btn btn-default btn-xs viewer-option" ng-model="graphPorts" ng-change="getGraph()"
-            uib-btn-checkbox btn-checkbox-true="'relax'" btn-checkbox-false="'hide'"> Ports </button>
+    <button class="btn btn-default btn-xs viewer-option" ng-model="showDataNodes" ng-change="showDataNodesChange()"
+            uib-btn-checkbox> Data </button>
+
+    <button class="btn btn-default btn-xs viewer-option" ng-model="showProcessNodes" ng-change="showProcessNodesChange()"
+            uib-btn-checkbox> Steps </button>
 
   </div>
 
