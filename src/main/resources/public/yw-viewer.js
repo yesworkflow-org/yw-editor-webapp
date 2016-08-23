@@ -116,6 +116,8 @@
                           "graph.datalabel = " + $scope.dataLabel + "\n" +
                           "graph.programlabel = " + $scope.programLabel + "\n" +
                           "graph.edgelabels = " + $scope.edgeLabels + "\n" +
+                          "graph.workflowbox = " + $scope.graphWorkflowBox + "\n" +
+                          "graph.titleposition = " + $scope.graphTitlePosition + "\n" +
                           "graph.dotcomments = on\n"
           })
           .then(onGraphComplete);
@@ -281,12 +283,13 @@
     $scope.graphView = 'combined';
     $scope.graphLayout = 'tb';
     $scope.graphParams = 'reduce';
-    $scope.graphPorts = 'relax';
+    $scope.graphPorts = 'group';
     $scope.dataLabel = 'both';
     $scope.programLabel = 'both';
     $scope.edgeLabels = 'hide';
+    $scope.graphWorkflowBox = 'show';
+    $scope.graphTitlePosition = 'top';
 
-    
     viewer.setReadOnly(true);
     viewer.setHighlightActiveLine(false);
     viewer.setShowPrintMargin(false);
