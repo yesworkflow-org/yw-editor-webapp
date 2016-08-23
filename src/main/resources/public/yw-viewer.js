@@ -72,6 +72,35 @@
       viewer.navigateTo(0,0);
     }
 
+    $scope.showProcessNodesChange = function() {
+      if ($scope.showProcessNodes) {
+          if ($scope.showDataNodes) {
+            $scope.graphView="combined";
+          } else {
+            $scope.graphView="process";
+          }
+      } else {
+          $scope.showDataNodes=true;
+          $scope.graphView="data";
+      }
+      $scope.getGraph();
+    }
+
+    $scope.showDataNodesChange = function() {
+      if ($scope.showDataNodes) {
+          if ($scope.showProcessNodes) {
+            $scope.graphView="combined";
+          } else {
+            $scope.graphView="data";
+          }
+      } else {
+          $scope.showProcessNodes=true;
+          $scope.graphView="process";
+      }
+      $scope.getGraph();
+    }
+
+
     $scope.getGraph = function() {
 
       if (config) {
@@ -247,6 +276,8 @@
     $scope.languageChange();
     $scope.graphSvg = '';
 
+    $scope.showProcessNodes = true;
+    $scope.showDataNodes = true;
     $scope.graphView = 'combined';
     $scope.graphLayout = 'tb';
     $scope.graphParams = 'reduce';

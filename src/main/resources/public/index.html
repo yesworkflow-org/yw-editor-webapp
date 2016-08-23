@@ -107,7 +107,7 @@
       <option value="r">R</option>
     </select>
 
-    <select class="editor-option" ng-model="keybinding" ng-change="keybindingeChange()" title="Select keyboard mode">
+    <select class="editor-option" ng-model="keybinding" ng-change="keybindingeChange()" title="Select key binding mode">
       <option value="ace">Ace</option>
       <option value="emacs">Emacs</option>
       <option value="vim">Vim</option>
@@ -125,7 +125,6 @@
       <option value="20">20</option>
       <option value="24">24</option>
     </select>
-
 
     <div class="btn-group btn-group-xs editor-option">        
         <label class="btn btn-default" uib-btn-radio="'light'" ng-model="theme" ng-change="themeChange()"
@@ -145,18 +144,18 @@
       <option value="300">300%</option>
     </select>
 
-    <select class="viewer-option"  ng-model="graphView" ng-change="getGraph()"  title="Select workflow view">
-      <option value="process">Process</option>
-      <option value="data">Data</option>
-      <option value="combined">Combined</option>
-    </select>
+    <div id="graph-layout-btn-group" class="btn-group btn-group-xs viewer-option">
+        <label class="btn btn-default" uib-btn-radio="'tb'" ng-model="graphLayout" ng-change="getGraph()" 
+               title="Vertical dataflow "> Vert </label>
+        <label class="btn btn-default"  uib-btn-radio="'lr'" ng-model="graphLayout" ng-change="getGraph()"
+               title="Horizontal dataflow"> Horiz </label>        
+    </div>
 
-    <select class="viewer-option" ng-model="graphLayout" ng-change="getGraph()" title="Select dataflow direction">
-      <option value="rl">Left</option>
-      <option value="lr">Right</option>
-      <option value="bt">Up</option>
-      <option value="tb">Down</option>
-    </select>
+    <button class="btn btn-default btn-xs viewer-option" ng-model="showProcessNodes" ng-change="showProcessNodesChange()"
+            uib-btn-checkbox> Processes </button>
+
+    <button class="btn btn-default btn-xs viewer-option" ng-model="showDataNodes" ng-change="showDataNodesChange()"
+            uib-btn-checkbox> Data </button>
 
     <button class="btn btn-default btn-xs viewer-option" ng-model="graphParams" ng-change="getGraph()"
             uib-btn-checkbox btn-checkbox-true="'reduce'" btn-checkbox-false="'hide'"> Params </button>
