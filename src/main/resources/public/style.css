@@ -1,11 +1,13 @@
-html {
+html 
+{
   height: 100%;
   width: 100%;
   overflow: hidden;
   font-size: 50%;
 }
 
-body {
+body 
+{
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -15,23 +17,8 @@ body {
     font-size: 9pt;
 }
 
-.styled-option {
-  margin: 10px;
-  text-align: left; 
-  vertical-align: bottom;
-}
-
-.styled-option select {
-  display: none;
-  width: 80px;
-  background: #f0f0f0;
-  position: absolute;
-  right: 0;
-  margin: -2px;
-}
-
-
-#top-toolbar {
+#top-toolbar 
+{
     position: absolute;
     top: 0;
     left: 0;
@@ -41,7 +28,8 @@ body {
     padding: 4px 0px;
 }
 
-#script {
+#script 
+{
     position: absolute;
     top: 26px;
     bottom: 23px;
@@ -50,7 +38,8 @@ body {
     margin: 0px 8px 0px 8px;
 }
 
-#bottom-toolbar {
+#bottom-toolbar 
+{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -60,7 +49,8 @@ body {
     padding: 3px 0px;
 }
 
-#editor {
+#editor 
+{
     position: absolute;
     top: 0;
     bottom: 0;
@@ -70,7 +60,8 @@ body {
     border: 1px solid black;
 }
 
-#viewer {
+#viewer 
+{
     position: absolute;
     top: 0;
     bottom: 0;
@@ -82,7 +73,8 @@ body {
     border-radius: 4px;
   }
 
-#text-viewer {
+#text-viewer 
+{
     position: absolute;
     top: 0;
     bottom: 0;
@@ -93,7 +85,8 @@ body {
     overflow: auto;
 }
 
-#graph-viewer {
+#graph-viewer
+{
     position: absolute;
     top: 0;
     bottom: 0;
@@ -105,7 +98,8 @@ body {
     overflow: auto;
 }
 
-#script-divider {
+#script-divider 
+{
     position: absolute;
     top: 0;
     bottom: 0;
@@ -114,58 +108,68 @@ body {
     cursor: ew-resize;
 }
 
-/*#viewer-mode-btn-group {
-    position: absolute;
-    top: 18px;
-    right: 21px;
-}*/
+#top-toolbar .editor-option,
+#top-toolbar .viewer-option,
+#bottom-toolbar .editor-option, 
+#bottom-toolbar .viewer-option 
+{
+    height: 18px;
+    border-radius: 4px;
+    outline: 0;
+    border-color: black;
+    line-height: normal;
+}
 
-.editor-option {
-    margin-left: 8px;
-    margin-bottom: 8px;
+#bottom-toolbar .editor-option, 
+#top-toolbar .editor-option 
+{
     float: left;
-    height: 18px;
-    background: #f0f0f0;
-    border-radius: 4px;
-    outline:0px;
+    margin-left: 8px;
 }
 
-.viewer-option {
-    margin-right: 8px;
-    margin-bottom: 8px;
+#bottom-toolbar .viewer-option, 
+#top-toolbar .viewer-option 
+{
     float: right;
-    height: 18px;
-    background: #f0f0f0;
-    border-radius: 4px;
-    outline:0px;
+    margin-right: 8px;
 }
 
-#bottom-toolbar .btn-group-xs>.btn, .btn-xs {
+#bottom-toolbar .btn-default.active, 
+#top-toolbar .btn-default.active, 
+.btn-default:active, 
+.open>.dropdown-toggle.btn-default 
+{
+    color: white;
+    background-color:dodgerblue;
+    border-color: black;
+}
+
+.btn-group-xs > .btn, 
+.btn, 
+.btn-default,  
+.btn-default.active, 
+.btn-default:active, 
+.btn-xs 
+{
     line-height: normal;
+    outline: 0;
+    border-color: black;
 }
 
-#bottom-toolbar .btn {
-    line-height: normal;
-}
-
-#top-toolbar .btn-group-xs>.btn, .btn-xs {
-    line-height: normal;
-}
-
-#top-toolbar .btn {
-    line-height: normal;
-}
-
-#bottom-toolbar .btn-default.active {
-    background-color: #fff;
+#top-toolbar .editor-option label,
+#top-toolbar .viewer-option label,
+#bottom-toolbar .editor-option label, 
+#bottom-toolbar .viewer-option label 
+{
     color: black;
-    line-height: normal;
-    outline:0px;
+    background-color: white;
+    border-color: black;
 }
 
-#bottom-toolbar .btn-default {
-    background-color: #fff;
-    color: #aaa;
-    line-height: normal;
-    outline:0px;
+#top-toolbar select option,
+#bottom-toolbar select option 
+{
+    color: black;
+    background-color: white;
+    border-color: black;
 }
