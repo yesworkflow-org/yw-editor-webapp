@@ -116,7 +116,7 @@ body
     height: 18px;
     border-radius: 4px;
     outline: 0;
-    border-color: black;
+    border-width: 0;
     line-height: normal;
 }
 
@@ -134,14 +134,17 @@ body
     margin-right: 8px;
 }
 
+#bottom-toolbar select,
 #bottom-toolbar .btn-default.active, 
 #top-toolbar .btn-default.active, 
 .btn-default:active, 
 .open>.dropdown-toggle.btn-default 
 {
     color: white;
-    background-color:dodgerblue;
-    border-color: black;
+    background-color: dimgray;
+    height: 18px;
+    border-width: 0;
+    padding-top: 2px;
 }
 
 .btn-group-xs > .btn, 
@@ -149,11 +152,16 @@ body
 .btn-default,  
 .btn-default.active, 
 .btn-default:active, 
+.btn-default:hover, 
+.btn-default:focus, 
 .btn-xs 
 {
     line-height: normal;
     outline: 0;
-    border-color: black;
+    border-width: 0;
+    background-color: silver;
+    height: 18px;
+    padding-top: 2px;
 }
 
 #top-toolbar .editor-option label,
@@ -162,8 +170,15 @@ body
 #bottom-toolbar .viewer-option label 
 {
     color: black;
-    background-color: white;
-    border-color: black;
+    background-color: silver;
+    border-width: 0;
+    outline: 0;
+}
+
+#bottom-toolbar select:active, 
+#bottom-toolbar select:focus {
+    border-width: 0;    
+    outline: 0;
 }
 
 #top-toolbar select option,
@@ -171,5 +186,13 @@ body
 {
     color: black;
     background-color: white;
-    border-color: black;
+    border-width: 0;
+}
+
+#top-toolbar select option:active,
+#bottom-toolbar select option:active 
+{
+    color: black;
+    background-color: white;
+    border-width: 0;
 }

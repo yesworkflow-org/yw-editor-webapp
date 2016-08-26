@@ -33,6 +33,7 @@
     $scope.languageChange = function() {
       editor.session.setMode( "ace/mode/" + $scope.language );
       $scope.getGraph();
+      editor.focus();
     }
 
     $scope.keybindingeChange = function() {
@@ -41,13 +42,14 @@
       } else {
         editor.setKeyboardHandler("ace/keyboard/" + $scope.keybinding);
       }
+      editor.focus();
     }
 
     $scope.fontsizeChange = function() {
       editor.setFontSize(parseInt($scope.fontsize));
       viewer.setFontSize(parseInt($scope.fontsize));
+      editor.focus();
     }
-
 
     $scope.themeChange = function() {
 
@@ -56,10 +58,12 @@
       if ($scope.theme == "light") {
         aceTheme = "ace/theme/xcode";
         $scope.background = "#fcfcfc";
+        graphViewer.attr('style', "background: white;");      
       } else {
         aceTheme = "ace/theme/tomorrow_night";
         $scope.background = "#b0b0b0";
-      }
+        graphViewer.attr('style', "background: #b0b0b0;");      
+}
       
       editor.setTheme(aceTheme);
       viewer.setTheme(aceTheme);
@@ -100,7 +104,6 @@
       $scope.getGraph();
     }
 
-
     $scope.getGraph = function() {
 
       if (config) {
@@ -131,6 +134,7 @@
 
     $scope.onZoomSelect = function() {
       $scope.getGraph();
+      editor.focus();
     }
     
     var updateViewer = function() {
@@ -299,6 +303,8 @@
     editor.setShowPrintMargin(false);
 
     editor.setKeyboardHandler(null);
+
+    var graphViewer = d3.select("#graph-viewer");
 
     $scope.language = 'python';
 
