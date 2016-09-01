@@ -287,7 +287,7 @@
     $scope.graphView = 'combined';
     $scope.graphLayout = 'tb';
     $scope.graphParams = 'reduce';
-    $scope.graphPorts = 'group';
+    $scope.graphPorts = 'relax';
     $scope.dataLabel = 'both';
     $scope.programLabel = 'both';
     $scope.edgeLabels = 'hide';
