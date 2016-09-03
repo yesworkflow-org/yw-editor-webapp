@@ -58,11 +58,11 @@
       if ($scope.theme == "light") {
         aceTheme = "ace/theme/xcode";
         $scope.background = "#fcfcfc";
-        graphViewer.attr('style', "background: white;");      
+        graphViewer.setAttribute('style', "background: white;");      
       } else {
         aceTheme = "ace/theme/tomorrow_night";
         $scope.background = "#b0b0b0";
-        graphViewer.attr('style', "background: #b0b0b0;");      
+        graphViewer.setAttribute('style', "background: #b0b0b0;");      
 }
       
       editor.setTheme(aceTheme);
@@ -191,30 +191,29 @@
 
       var svgElementStart = graph.svg.search("<svg");
       var svgElement = graph.svg.substring(svgElementStart);
-      d3.select('#graph-viewer').html(svgElement);
+      graphViewer.innerHTML = svgElement;
+      svg = graphViewer.getElementsByTagName("svg")[0];      
+      svg.setAttribute("preserveAspectRatio", "xMinYMin meet");
+      svg_native_width = parseInt(svg.getAttribute("width").slice(0, -2));
+      svg_native_height = parseInt(svg.getAttribute("height").slice(0, -2));
 
-      svg = d3.select('svg');
-      svg.attr("preserveAspectRatio", "xMinYMin meet");
-      svg_native_width = parseInt(svg.attr("width").slice(0, -2));
-      svg_native_height = parseInt(svg.attr("height").slice(0, -2));
-
-      var background = svg.select("polygon");
+      var background = svg.getElementsByTagName("polygon")[0];
       if ($scope.theme == "light") {
-        background.attr("fill", "white");
+        background.setAttribute("fill", "white");
       } else {
-        background.attr("fill", "#b0b0b0");
+        background.setAttribute("fill", "#b0b0b0");
       }
 
       if ($scope.viewerZoom !== "fit") {
 
         var zoom = parseInt($scope.viewerZoom);
-        svg.attr("width", svg_native_width * zoom / 100);
-        svg.attr("height", svg_native_height * zoom / 100);
+        svg.setAttribute("width", svg_native_width * zoom / 100);
+        svg.setAttribute("height", svg_native_height * zoom / 100);
 
       } else {
 
-        var script_div = d3.select("#script").node();
-        var viewer_container_div = d3.select("#viewer").node();
+        var script_div = document.getElementById("script");
+        var viewer_container_div = document.getElementById("viewer");
 
         var div_width = viewer_container_div.getClientRects()[0].width - 40;
         if (div_width < 1) {
@@ -230,11 +229,11 @@
         var fit_height_zoom = div_height / svg_native_height;
         
         if (fit_height_zoom > fit_width_zoom) {
-          svg.attr("width", div_width);
-          svg.attr("height", svg_native_height * fit_width_zoom);
+          svg.setAttribute("width", div_width);
+          svg.setAttribute("height", svg_native_height * fit_width_zoom);
         } else {
-          svg.attr("height", div_height);
-          svg.attr("width", svg_native_width * fit_height_zoom);
+          svg.setAttribute("height", div_height);
+          svg.setAttribute("width", svg_native_width * fit_height_zoom);
         }
       }
     }
@@ -304,7 +303,7 @@
 
     editor.setKeyboardHandler(null);
 
-    var graphViewer = d3.select("#graph-viewer");
+    var graphViewer = document.getElementById("graph-viewer");
 
     $scope.language = 'python';
 
