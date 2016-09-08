@@ -2,40 +2,30 @@ package org.yesworkflow.webapp.editor.model;
 
 public class YWEditorConfiguration {
     
-    private String graphServiceHost;
-    private Integer graphServicePort;
-    private String graphServiceApiVersion;
+    private String editorServiceBaseUrl;
+    private String graphServiceBaseUrl;
 
 	public YWEditorConfiguration() {}
 
-    public YWEditorConfiguration(String graphServiceHost, Integer graphServicePort, String graphServiceApiVersion) {
+    public YWEditorConfiguration(String editorServiceBaseUrl, String graphServiceBaseUrl) {
         this();
-        this.graphServiceHost = graphServiceHost;
-        this.graphServicePort = graphServicePort;
-        this.graphServiceApiVersion = graphServiceApiVersion;
+        this.editorServiceBaseUrl = editorServiceBaseUrl;
+        this.graphServiceBaseUrl = graphServiceBaseUrl;
     }
 
-    public void setGraphServiceHost(String graphServiceHost) {
-        this.graphServiceHost = graphServiceHost;
+    public void setEditorServiceBaseUrl(String editorServiceBaseUrl) {
+        this.editorServiceBaseUrl = editorServiceBaseUrl;
     }
 
-    public String getGraphServiceHost() {
-        return this.graphServiceHost;
+    public String getEditorServiceBaseUrl() {
+        return this.editorServiceBaseUrl;
     }
 
-    public void setGraphServicePort(Integer graphServicePort) {
-        this.graphServicePort = graphServicePort;
+    public void setgraphServiceBaseUrl(String graphServiceBaseUrl) {
+        this.graphServiceBaseUrl = graphServiceBaseUrl;
     }
 
-    public Integer getGraphServicePort() {
-        return this.graphServicePort;
-    }
-
-    public void setGraphServiceApiVersion(String graphServiceApiVersion) {
-        this.graphServiceApiVersion = graphServiceApiVersion;
-    }
-
-    public String getGraphServiceApiVersion() {
-        return this.graphServiceApiVersion;
+    public String getGraphServiceBaseUrl() {
+        return this.graphServiceBaseUrl;
     }
 }

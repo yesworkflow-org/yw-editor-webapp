@@ -8,12 +8,9 @@
 
     var onEditorConfigReceived = function(response) {
       config = response.data;
-      config.graphServiceUrlBase =  "http://" + config.graphServiceHost + 
-                                    ":"       + config.graphServicePort + 
-                                    "/api/"   + config.graphServiceApiVersion;
     } 
 
-    $http.get("/api/v1/config")
+    $http.get("/yw-editor-service/api/v1/config")
         .then(onEditorConfigReceived);
 
     var editor = ace.edit("editor");
@@ -63,7 +60,7 @@
         aceTheme = "ace/theme/tomorrow_night";
         $scope.background = "#b0b0b0";
         graphViewer.setAttribute('style', "background: #b0b0b0;");      
-}
+      }
       
       editor.setTheme(aceTheme);
       viewer.setTheme(aceTheme);
@@ -108,7 +105,7 @@
 
       if (config) {
         $http.post(
-          config.graphServiceUrlBase + "/graph",
+          config.graphServiceBaseUrl + "graph",
           {
               language: $scope.language,
               code: editor.getValue(),
