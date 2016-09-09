@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@ComponentScan(basePackages="org.yesworkflow.webapp.editor,org.yesworkflow.service.graph.controller")
+@ComponentScan(basePackages="org.yesworkflow.webapp.editor,org.yesworkflow.service.graph")
 public class YWEditorApp {
 
     public static void main(String[] args) {
