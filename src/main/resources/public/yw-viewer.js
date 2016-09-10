@@ -164,7 +164,11 @@
             updateSvg();
           } else {
             $scope.showGraphViewer = false;
-            viewer.setValue(graph.error);
+            if (graph.error) {
+              viewer.setValue(graph.error);
+            } else {
+              viewer.setValue("Graph service error");
+            }
           }
           break;
       }
