@@ -81,6 +81,6 @@ For example, to have the editor service employ the graph service instance runnin
 
     $ java -jar yw-graph-service-0.2.1.1.jar --server.port=9000
 
-2. Start the YW editor service, specying the host and port for the graph service via the graph-service.host option:
+2. Start the YW editor service, specying the host and port for the graph service via the `graph-service.host` option:
 
     $ java -jar yw-editor-app-0.2.1.1.jar --graph-service.host=http://myserver.mydomain.com:9000
