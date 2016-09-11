@@ -77,7 +77,7 @@ By default the YW editor service bundles the graph service in the same server pr
 
 For example, to have the editor service employ the graph service instance running on port 9000 of the host myserver.mydomain.com:
 
-1. Start the graph service (see the graph service [README](https://github.com/yesworkflow-org/yw-graph-service/blob/master/README.md) for more details) on the host myserver.mydomain.com:
+1. Start the graph service (see the [YW Graph Service README](https://github.com/yesworkflow-org/yw-graph-service/blob/master/README.md) for more details) on the host myserver.mydomain.com:
 
     $ java -jar yw-graph-service-0.2.1.1.jar --server.port=9000
 
