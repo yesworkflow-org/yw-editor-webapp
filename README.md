@@ -75,9 +75,9 @@ Running the YW Graph Service in a different process
 ---------------------------------------------------
 By default the YW editor service bundles the graph service in the same server process. To use the graph service running in a different process (or running on a different computer) simply start the graph and editor services separately, and provide the URL of the graph service to the editor service.
 
-For example, to have the editor service emply the graph service instance running on port 9000 of the host myserver.mydomain.com:
+For example, to have the editor service employ the graph service instance running on port 9000 of the host myserver.mydomain.com:
 
-1. Start the graph service (see the graph service [README]()https://github.com/yesworkflow-org/yw-graph-service/blob/master/README.md) for more details) on the host myserver.mydomain.com:
+1. Start the graph service (see the graph service [README](https://github.com/yesworkflow-org/yw-graph-service/blob/master/README.md) for more details) on the host myserver.mydomain.com:
 
     $ java -jar yw-graph-service-0.2.1.1.jar --server.port=9000
 
