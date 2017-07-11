@@ -157,7 +157,16 @@
             viewer.setValue(graph.error)
           }
           break;
-          
+
+        case "facts":
+          $scope.showGraphViewer = false;
+          if (graph.facts) {
+            viewer.setValue(graph.facts);
+          } else {
+            viewer.setValue(graph.error)
+          }
+          break;
+
         case "graph":
           if (graph.svg) {
             $scope.showGraphViewer = true;
@@ -246,7 +255,7 @@
     var onSampleLoaded = function(response) {
       editor.setValue(response.data);
       editor.navigateTo(0,0);
-      $scope.getGraph();
+      setTimeout(function() { $scope.getGraph(); }, 100);
     }
 
     $scope.loadSample = function(script) {
