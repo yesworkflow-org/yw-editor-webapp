@@ -3,8 +3,6 @@ YesWorkflow Editor Service
 
 This repository contains the source code for a application currently under development for viewing [YesWorkflow](https://github.com/yesworkflow-org/yw-prototypes/blob/master/README.md) (YW) visualizations of scripts in real time as the scripts are edited. The visualizations are produced by the [YW Graph Service](https://github.com/yesworkflow-org/yw-graph-service). The graphical user interface runs in any modern web browser.
 
-A demonstration of the editor, graph service, and YesWorkflow can be found at [try.yesworkflow.org](http://try.yesworkflow.org).
-
 Running the YW Editor Web Application
 -------------------------------------
 The YW editor service can be run from any computer with a Java Runtime Environment (JRE) version 1.8 or higher. The service is implemented using [Spring Boot](http://projects.spring.io/spring-boot/), and employs an embedded Tomcat application server. It is not necessary to install Tomcat or a web server of any kind.
